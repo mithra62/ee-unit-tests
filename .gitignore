@@ -1,3 +1,4 @@
 .DS_Store
-
 system/user/addons/unit_tests/vendor
+/system/user/addons/unit_tests/composer.phar
+/system/user/addons/unit_tests/composer.lock
