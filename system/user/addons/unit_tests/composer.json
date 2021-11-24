@@ -1,0 +1,33 @@
+{
+  "name": "mithra62/ee_unit_tests",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Eric Lamb",
+      "email": "eric@mithra62.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.3",
+    "psr/container": "^2.0",
+    "phpunit/phpunit": "^9"
+  },
+  "autoload": {
+    "psr-4": {
+      "Mithra62\\UnitTests\\": "src"
+    },
+    "classmap": [
+      "."
+    ]
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "config": {
+    "preferred-install": {
+      "*": "dist"
+    }
+  },
+  "require-dev": {
+
+  }
+}
