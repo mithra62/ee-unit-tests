@@ -51,14 +51,40 @@ class Tests extends Cli
      */
     public function handle()
     {
+        $addon = $this->option('-a');
+        if(!ee('App')->has($addon)) {
+            return $this->error(
+                'Addon not found'
+            );
+        }
+
+        $provider = ee('App')->get($this->option('-a'));
+        if(!$provider instanceof \ExpressionEngine\Core\Provider) {
+            return $this->error(
+                'Addon not found!'
+            );
+        }
+
+        $tests_path = realpath($provider->getPath().'/tests');
+        if(!$tests_path) {
+            //check addon.setup for tests setting
+            $settings = $provider->get('tests');
+            if($settings) {
+                $tests_path = $provider->getPath().'/'.$settings['path'];
+            }
+        }
+
+        if(!$tests_path) {
+            return $this->error(
+                'Cannot find tests directory!'
+            );
+        }
+
         $_SERVER['argv'] = [
             'phpunit',
-            'D:\Projects\CartThrob6\develop\htdocs\system\user\addons\custom_addon\tests'
+            $tests_path
         ];
-        //
-//        echo $this->option('-a');
-//        print_r($_SERVER['argv']);
-//        exit;
+
         \PHPUnit\TextUI\Command::main();
     }
 }
