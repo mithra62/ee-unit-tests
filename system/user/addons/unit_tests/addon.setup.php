@@ -15,9 +15,9 @@ return [
     // Advanced settings
 
     'commands' => [
-        'tests:run' => Mithra62\UnitTests\Commands\Tests::class,
-        'cartthrob:seeder:seed' => CartThrob\Seeder\Commands\Seed::class,
-        'cartthrob:seeder:purge' => CartThrob\Seeder\Commands\Purge::class,
-        'cartthrob:seeder:cleanup' => CartThrob\Seeder\Commands\Cleanup::class,
+        'tests:run' => Mithra62\UnitTests\Commands\Tests::class
     ],
+    'tests' => [
+        'path' => 'src/Tests'
+    ]
 ];
