@@ -2,46 +2,62 @@
 namespace Mithra62\UnitTests\Tests;
 
 use PHPUnit\Framework\TestCase;
+use ExpressionEngine\Core\Provider;
 
 class AddonSetupTest extends TestCase
 {
+    /**
+     * @return void
+     */
     public function testFileExists(): void
     {
         $file_name = realpath(PATH_THIRD.'/unit_tests/addon.setup.php');
         $this->assertNotNull($file_name);
-        $this->assertTrue(file_exists($file_name));
     }
 
-    public function testAuthorValue(): void
+    /**
+     * @return Provider
+     */
+    public function testAuthorValue(): Provider
     {
-        $file_name = realpath(PATH_THIRD.'/unit_tests/addon.setup.php');
-        $setup = include $file_name;
-        $this->assertIsArray($setup);
-        $this->assertArrayHasKey('author', $setup);
-        $this->assertEquals('mithra62', $setup['author']);
+        $addon = ee('App')->get('unit_tests');
+        $this->assertEquals('mithra62', $addon->getAuthor());
+        return $addon;
     }
 
-    public function testNameValue(): void
+    /**
+     * @depends testAuthorValue
+     * @param $addon
+     * @return Provider
+     */
+    public function testNameValue($addon): Provider
     {
-        $file_name = realpath(PATH_THIRD.'/unit_tests/addon.setup.php');
-        $setup = include $file_name;
-        $this->assertArrayHasKey('name', $setup);
-        $this->assertEquals('unit_tests', $setup['name']);
+        $addon = ee('App')->get('unit_tests');
+        $this->assertEquals('unit_tests', $addon->getName());
+        return $addon;
     }
 
-    public function testNamespaceValue(): void
+    /**
+     * @depends testAuthorValue
+     * @param $addon
+     * @return Provider
+     */
+    public function testNamespaceValue($addon): Provider
     {
-        $file_name = realpath(PATH_THIRD.'/unit_tests/addon.setup.php');
-        $setup = include $file_name;
-        $this->assertArrayHasKey('namespace', $setup);
-        $this->assertEquals('Mithra62\UnitTests', $setup['namespace']);
+        $addon = ee('App')->get('unit_tests');
+        $this->assertEquals('Mithra62\UnitTests', $addon->getNamespace());
+        return $addon;
     }
 
-    public function testSettingsValue(): void
+    /**
+     * @depends testAuthorValue
+     * @param $addon
+     * @return Provider1
+     */
+    public function testSettingsValue($addon): Provider
     {
-        $file_name = realpath(PATH_THIRD.'/unit_tests/addon.setup.php');
-        $setup = include $file_name;
-        $this->assertArrayHasKey('settings_exist', $setup);
-        $this->assertFalse($setup['settings_exist']);
+        $addon = ee('App')->get('unit_tests');
+        $this->assertFalse($addon->get('settings_exist'));
+        return $addon;
     }
 }
