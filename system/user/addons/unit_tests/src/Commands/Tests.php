@@ -2,6 +2,7 @@
 namespace Mithra62\UnitTests\Commands;
 
 use ExpressionEngine\Cli\Cli;
+use Mithra62\UnitTests\Args;
 
 class Tests extends Cli
 {
@@ -58,6 +59,7 @@ class Tests extends Cli
             );
         }
 
+        //prob redundant but shit happens so :shrug:
         $provider = ee('App')->get($this->option('-a'));
         if(!$provider instanceof \ExpressionEngine\Core\Provider) {
             return $this->error(
@@ -80,15 +82,7 @@ class Tests extends Cli
             );
         }
 
-        $args = ['phpunit'];
-        $xml_file = $tests_path.'/phpunit.xml';
-        if(file_exists($xml_file)) {
-            $args[] = '-c';
-            $args[] = $xml_file;
-        }
-
-        $args[] = $tests_path;
-        $_SERVER['argv'] = $args;
+        $_SERVER['argv'] = Args::buildArgs($tests_path);
 
         \PHPUnit\TextUI\Command::main();
     }
