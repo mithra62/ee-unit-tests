@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         bootstrap="bootstrap.php"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="true"
+         stopOnError="true"
+         stopOnSkipped="true" 
+         printerClass="PHPUnit\TextUI\DefaultResultPrinter">
+    <testsuites>
+        <testsuite name="Seeder Test Suite">
+            <directory suffix="Test.php">./</directory>
+        </testsuite>
+    </testsuites>
+    <coverage cacheDirectory="coverage"
+              includeUncoveredFiles="true"
+              processUncoveredFiles="true"
+              pathCoverage="false"
+              ignoreDeprecatedCodeUnits="true"
+              disableCodeCoverageIgnore="true">
+        <report>
+            <clover outputFile="reports/clover.xml"/>
+            <cobertura outputFile="reports/cobertura.xml"/>
+            <crap4j outputFile="reports/crap4j.xml" threshold="50"/>
+            <html outputDirectory="reports/html-coverage" lowUpperBound="50" highLowerBound="90"/>
+            <php outputFile="coverage.php"/>
+            <text outputFile="reports/coverage.txt" showUncoveredFiles="false" showOnlySummary="true"/>
+            <xml outputDirectory="xml-coverage"/>
+        </report>
+    </coverage>
+    <logging>
+        <junit outputFile="logs/junit.xml"/>
+        <teamcity outputFile="logs/teamcity.txt"/>
+        <testdoxHtml outputFile="logs/testdox.html"/>
+        <testdoxText outputFile="logs/testdox.txt"/>
+        <testdoxXml outputFile="logs/testdox.xml"/>
+        <text outputFile="logs/logfile.txt"/>
+    </logging>
+</phpunit>

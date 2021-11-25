@@ -2,3 +2,10 @@
 system/user/addons/unit_tests/vendor
 /system/user/addons/unit_tests/composer.phar
 /system/user/addons/unit_tests/composer.lock
+/system/user/addons/unit_tests/src/Tests/logs/teamcity.txt
+/system/user/addons/unit_tests/src/Tests/logs/testdox.xml
+/system/user/addons/unit_tests/src/Tests/logs/testdox.txt
+/system/user/addons/unit_tests/src/Tests/logs/testdox.html
+/system/user/addons/unit_tests/src/Tests/logs/logfile.txt
+/system/user/addons/unit_tests/src/Tests/logs/junit.xml
+/system/user/addons/unit_tests/src/Tests/.phpunit.result.cache
