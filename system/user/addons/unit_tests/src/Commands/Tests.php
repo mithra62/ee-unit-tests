@@ -34,7 +34,7 @@ class Tests extends Cli
      * @var string
      */
     public $usage = [
-        'php eecli.php test'
+        'php eecli.php test:run'
     ];
 
     /**
