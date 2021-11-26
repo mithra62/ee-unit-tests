@@ -3,6 +3,7 @@ namespace Mithra62\UnitTests\Commands;
 
 use ExpressionEngine\Cli\Cli;
 use Mithra62\UnitTests\Args;
+use ExpressionEngine\Core\Provider;
 
 class Tests extends Cli
 {
@@ -60,22 +61,14 @@ class Tests extends Cli
         }
 
         //prob redundant but shit happens so :shrug:
-        $provider = ee('App')->get($this->option('-a'));
-        if(!$provider instanceof \ExpressionEngine\Core\Provider) {
+        $addon = ee('App')->get($this->option('-a'));
+        if(!$addon instanceof Provider) {
             return $this->error(
                 'Addon not found!'
             );
         }
 
-        $tests_path = realpath($provider->getPath().'/tests');
-        if(!$tests_path) {
-            //check addon.setup for tests setting
-            $settings = $provider->get('tests');
-            if($settings) {
-                $tests_path = $provider->getPath().'/'.$settings['path'];
-            }
-        }
-
+        $tests_path = Args::buildPath($addon);
         if(!$tests_path) {
             return $this->error(
                 'Cannot find tests directory!'
