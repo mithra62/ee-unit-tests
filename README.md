@@ -7,6 +7,13 @@ EE Unit Tests is an Add-on for ExpressionEngine that allows developers to execut
 1. ExpressionEngine >= 6.1
 2. PHP 7.3 
 
+## Installation
+To get EE Unit Tests working simply:
+
+1. Install this Git repo
+2. Run `composer install` within the `unit_tests` directory (where the `composer.json` file is located. 
+3. Write your tests
+
 
 ## How It Works
 
@@ -26,6 +33,12 @@ So, previously, to run unit tests on ExpressionEngine code was cumbersome (at be
 
 But, with release of 6.1, we got Command Line tools! Which handles all the rigamarole of setting all the bootstrap and environment up. So, yeah, just a silly little pass through thing here is all that's needed.
 
+## Creating Unit Tests for Add-ons
+
+PHPUnit unit tests will be automatically detected within any `tests` directories stored in your add-on's root directory. For example, `unit_tests/tests` would be automatically picked up. 
+
+You can also configure a specific directory, relative to your add-on directory, within your `addon.setup.php` file, using the `tests` key. 
+
 ## Limitations
 
-The biggest problem is that there isn't any [Command Line Options](https://phpunit.readthedocs.io/en/9.5/textui.html#command-line-options) Support for configuration. Too much. Not worth it. Instead, be sure to use a `phpunit.xml` configuration file stored within your Tests root directory. 
+The biggest problem is that there isn't any [Command Line Options](https://phpunit.readthedocs.io/en/9.5/textui.html#command-line-options) Support for configuration. Too much. Not worth it. Instead, be sure to use a `phpunit.xml` configuration file stored within your Tests root directory.
