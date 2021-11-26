@@ -23,7 +23,7 @@ EE Unit Tests is middleware between ExpressionEngine and your unit tests that yo
 
 This will execute the Tests within the `unit_tests` add-on. 
 
-`php .\system\eecli.php tests:run -a unit_tests`
+`php ./system/eecli.php tests:run -a your_addon_name`
 
 ### WHY THE HELL WOULD YOU BUILD IT THIS WAY?!?!
 
