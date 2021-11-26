@@ -17,7 +17,7 @@ class Args
             //check addon.setup for tests setting
             $settings = $addon->get('tests');
             if(!empty($settings['path'])) {
-                $tests_path = $addon->getPath().'/'.$settings['path'];
+                $tests_path = realpath($addon->getPath().'/'.$settings['path']);
             }
 
             return $tests_path;
