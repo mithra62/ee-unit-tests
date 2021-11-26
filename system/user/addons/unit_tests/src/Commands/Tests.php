@@ -53,10 +53,11 @@ class Tests extends Cli
      */
     public function handle()
     {
+        ee()->lang->loadfile('unit_tests');
         $addon = $this->option('-a');
         if(!ee('App')->has($addon)) {
             return $this->error(
-                'Addon not found'
+                'm62.ut.addon_not_found'
             );
         }
 
@@ -64,14 +65,14 @@ class Tests extends Cli
         $addon = ee('App')->get($this->option('-a'));
         if(!$addon instanceof Provider) {
             return $this->error(
-                'Addon not found!'
+                'm62.ut.addon_not_found'
             );
         }
 
         $tests_path = Args::buildPath($addon);
         if(!$tests_path) {
             return $this->error(
-                'Cannot find tests directory!'
+                'm62.ut.cannot_find_tests_dir'
             );
         }
 
