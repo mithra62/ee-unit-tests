@@ -9,7 +9,6 @@
   ],
   "require": {
     "php": ">=7.3",
-    "psr/container": "^2.0",
     "phpunit/phpunit": "^9"
   },
   "autoload": {
