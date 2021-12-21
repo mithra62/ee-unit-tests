@@ -25,6 +25,10 @@ This will execute the Tests within the `unit_tests` add-on.
 
 `php ./system/eecli.php tests:run -a your_addon_name`
 
+The below will display the available tests on the system
+
+`php ./system/eecli.php tests:list`
+
 ### WHY THE HELL WOULD YOU BUILD IT THIS WAY?!?!
 
 So, previously, to run unit tests on ExpressionEngine code was cumbersome (at best). We're talking bootstraps, code runners, database instantiation, raw CodeIgniter, the list goes on. And this was PER PROJECT. 
