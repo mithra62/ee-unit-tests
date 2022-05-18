@@ -20,7 +20,9 @@ class Args
                 $tests_path = realpath($addon->getPath().'/'.$settings['path']);
             }
 
-            return $tests_path;
+            if($tests_path) {
+                return $tests_path;
+            }
         }
 
         return null;
