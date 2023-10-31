@@ -15,7 +15,7 @@ class TestsTest extends TestCase
 
     /**
      * @depends testParentInstance
-     * @param $command
+     * @param TestsCommand $command
      * @return TestsCommand
      */
     public function testSignatureAttributeExists(TestsCommand $command): TestsCommand
@@ -26,7 +26,7 @@ class TestsTest extends TestCase
 
     /**
      * @depends testParentInstance
-     * @param $command
+     * @param TestsCommand $command
      * @return TestsCommand
      */
     public function testSignatureValue(TestsCommand $command): TestsCommand
@@ -37,7 +37,7 @@ class TestsTest extends TestCase
 
     /**
      * @depends testParentInstance
-     * @param $command
+     * @param TestsCommand $command
      * @return TestsCommand
      */
     public function testNameAttributeExists(TestsCommand $command): TestsCommand
@@ -48,7 +48,7 @@ class TestsTest extends TestCase
 
     /**
      * @depends testParentInstance
-     * @param $command
+     * @param TestsCommand $command
      * @return TestsCommand
      */
     public function testNameValue(TestsCommand $command): TestsCommand
@@ -59,7 +59,7 @@ class TestsTest extends TestCase
 
     /**
      * @depends testParentInstance
-     * @param $command
+     * @param TestsCommand $command
      * @return TestsCommand
      */
     public function testDescAttributeExists(TestsCommand $command): TestsCommand
@@ -70,7 +70,7 @@ class TestsTest extends TestCase
 
     /**
      * @depends testParentInstance
-     * @param $command
+     * @param TestsCommand $command
      * @return TestsCommand
      */
     public function testDescValue(TestsCommand $command): TestsCommand
@@ -81,7 +81,7 @@ class TestsTest extends TestCase
 
     /**
      * @depends testParentInstance
-     * @param $command
+     * @param TestsCommand $command
      * @return TestsCommand
      */
     public function testSummaryAttributeExists(TestsCommand $command): TestsCommand
@@ -92,7 +92,7 @@ class TestsTest extends TestCase
 
     /**
      * @depends testParentInstance
-     * @param $command
+     * @param TestsCommand $command
      * @return TestsCommand
      */
     public function testSummaryValue(TestsCommand $command): TestsCommand
@@ -103,7 +103,7 @@ class TestsTest extends TestCase
 
     /**
      * @depends testParentInstance
-     * @param $command
+     * @param TestsCommand $command
      * @return TestsCommand
      */
     public function testUsageAttributeExists(TestsCommand $command): TestsCommand
@@ -114,7 +114,7 @@ class TestsTest extends TestCase
 
     /**
      * @depends testParentInstance
-     * @param $command
+     * @param TestsCommand $command
      * @return TestsCommand
      */
     public function testUsageIsArray(TestsCommand $command): TestsCommand
@@ -125,7 +125,7 @@ class TestsTest extends TestCase
 
     /**
      * @depends testParentInstance
-     * @param $command
+     * @param TestsCommand $command
      * @return TestsCommand
      */
     public function testUsageTotalValues(TestsCommand $command): TestsCommand
@@ -136,7 +136,7 @@ class TestsTest extends TestCase
 
     /**
      * @depends testParentInstance
-     * @param $command
+     * @param TestsCommand $command
      * @return TestsCommand
      */
     public function testOptionsAttributeExists(TestsCommand $command): TestsCommand
@@ -147,7 +147,7 @@ class TestsTest extends TestCase
 
     /**
      * @depends testParentInstance
-     * @param $command
+     * @param TestsCommand $command
      * @return TestsCommand
      */
     public function testOptionsIsArray(TestsCommand $command): TestsCommand
@@ -158,23 +158,34 @@ class TestsTest extends TestCase
 
     /**
      * @depends testParentInstance
-     * @param $command
+     * @param TestsCommand $command
      * @return TestsCommand
      */
     public function testOptionsTotalValues(TestsCommand $command): TestsCommand
     {
-        $this->assertCount(1, $command->commandOptions);
+        $this->assertCount(2, $command->commandOptions);
         return $command;
     }
 
     /**
      * @depends testParentInstance
-     * @param $command
+     * @param TestsCommand $command
      * @return TestsCommand
      */
     public function testAOptionExists(TestsCommand $command): TestsCommand
     {
         $this->assertTrue(array_key_exists('addon,a:', $command->commandOptions));
+        return $command;
+    }
+
+    /**
+     * @depends testAOptionExists
+     * @param TestsCommand $command
+     * @return TestsCommand
+     */
+    public function testPOptionExists(TestsCommand $command): TestsCommand
+    {
+        $this->assertTrue(array_key_exists('path,p:', $command->commandOptions));
         return $command;
     }
 }
