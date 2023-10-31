@@ -44,7 +44,8 @@ class Tests extends Cli
      * @var array
      */
     public $commandOptions = [
-        'addon,a:' => 'The Addon Tests you want to run'
+        'addon,a:' => 'The Addon Tests you want to run',
+        'path,p:' => 'A custom path to the tests you want to run. Must be full path.',
     ];
 
     /**
@@ -53,27 +54,30 @@ class Tests extends Cli
      */
     public function handle()
     {
-        ee()->lang->loadfile('unit_tests');
-        $addon = $this->option('-a');
-        if(!ee('App')->has($addon)) {
-            return $this->error(
-                'm62.ut.addon_not_found'
-            );
-        }
-
-        //prob redundant but shit happens so :shrug:
-        $addon = ee('App')->get($this->option('-a'));
-        if(!$addon instanceof Provider) {
-            return $this->error(
-                'm62.ut.addon_not_found'
-            );
-        }
-
-        $tests_path = Args::buildPath($addon);
+        $tests_path = $this->option('-p');
         if(!$tests_path) {
-            return $this->error(
-                'm62.ut.cannot_find_tests_dir'
-            );
+            ee()->lang->loadfile('unit_tests');
+            $addon = $this->option('-a');
+            if (!ee('App')->has($addon)) {
+                return $this->error(
+                    'm62.ut.addon_not_found'
+                );
+            }
+
+            //prob redundant but shit happens so :shrug:
+            $addon = ee('App')->get($this->option('-a'));
+            if (!$addon instanceof Provider) {
+                return $this->error(
+                    'm62.ut.addon_not_found'
+                );
+            }
+
+            $tests_path = Args::buildPath($addon);
+            if (!$tests_path) {
+                return $this->error(
+                    'm62.ut.cannot_find_tests_dir'
+                );
+            }
         }
 
         $_SERVER['argv'] = Args::buildArgs($tests_path);
