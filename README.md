@@ -25,7 +25,7 @@ This will execute the Tests within the `unit_tests` add-on.
 
 `php ./system/eecli.php tests:run -a your_addon_name`
 
-This will execute the Tests within the `unit_tests` add-on. 
+This will execute the Tests located at `p`. 
 
 `php ./system/eecli.php tests:run -p /full/path/to/tests`
 
