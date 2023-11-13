@@ -2,9 +2,9 @@
 namespace Mithra62\UnitTests\Tests\Commands;
 
 use PHPUnit\Framework\TestCase;
-use Mithra62\UnitTests\Commands\Tests AS TestsCommand;
+use Mithra62\UnitTests\Commands\ListIt AS TestsCommand;
 
-class TestsTest extends TestCase
+class ListTest extends TestCase
 {
     public function testParentInstance(): TestsCommand
     {
@@ -31,7 +31,7 @@ class TestsTest extends TestCase
      */
     public function testSignatureValue(TestsCommand $command): TestsCommand
     {
-        $this->assertEquals('tests:run', $command->signature);
+        $this->assertEquals('tests:list', $command->signature);
         return $command;
     }
 
@@ -163,29 +163,7 @@ class TestsTest extends TestCase
      */
     public function testOptionsTotalValues(TestsCommand $command): TestsCommand
     {
-        $this->assertCount(2, $command->commandOptions);
-        return $command;
-    }
-
-    /**
-     * @depends testParentInstance
-     * @param TestsCommand $command
-     * @return TestsCommand
-     */
-    public function testAOptionExists(TestsCommand $command): TestsCommand
-    {
-        $this->assertTrue(array_key_exists('addon,a:', $command->commandOptions));
-        return $command;
-    }
-
-    /**
-     * @depends testAOptionExists
-     * @param TestsCommand $command
-     * @return TestsCommand
-     */
-    public function testPOptionExists(TestsCommand $command): TestsCommand
-    {
-        $this->assertTrue(array_key_exists('path,p:', $command->commandOptions));
+        $this->assertCount(0, $command->commandOptions);
         return $command;
     }
 }

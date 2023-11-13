@@ -12,7 +12,7 @@
          stopOnSkipped="true" 
          printerClass="PHPUnit\TextUI\DefaultResultPrinter">
     <testsuites>
-        <testsuite name="Seeder Test Suite">
+        <testsuite name="Unit Tests Add-on Test Suite">
             <directory suffix="Test.php">./</directory>
         </testsuite>
     </testsuites>
